@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Steven Universo</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/fusoes.css">
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo"><img src="assets/imgs/logo.png" alt="logo" width="150px"></h1>
+            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Inicial</a>
+                </li>
+                <li class="agora">Fusão</li>
+                <!-- <li>|</li> -->
+                <li>
+                    <a href="./login.html">Login</a>
+                </li>
+                <li>
+                    <a href="./login.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- simulador inicio -->
+    <div class="simulador">
+        <div class="container-card">
+            <div class="column">
+                <button class="card" onclick="btn_steven()"><img src="assets/imgs/Steven.png" alt="steven"
+                        width="150px"></button>
+                <button class="card" onclick="btn_perola()"><img src="assets/imgs/perola.png" alt="perola"
+                        width="150px"></button>
+                <button class="card" onclick="btn_ametista()"><img src="assets/imgs/ametista.png" alt="ametista"
+                        width="150px"></button>
+            </div>
+            <div class="column">
+                <button class="card" onclick="btn_garnet()"><img src="assets/imgs/garnet.png" alt="garnet"
+                        width="150px"></button>
+                <button class="card" onclick="btn_lapis()"><img src="assets/imgs/lapis.png" alt="lapis"
+                        width="150px"></button>
+                <button class="card" onclick="btn_rose()"><img src="assets/imgs/rose.png" alt="rose"
+                        width="150px"></button>
+            </div>
+            <div class="column">
+                <button class="card" onclick="btn_jasper()"><img src="assets/imgs/jasper.png" alt="jasper"
+                        width="150px"></button>
+                <button class="card" onclick="btn_ruby()"><img src="assets/imgs/ruby.png" alt="roby"
+                        width="150px"></button>
+                <button class="card" onclick="btn_safira()"><img src="assets/imgs/safira.png" alt="safira"
+                        width="150px"></button>
+            </div>
+
+        </div>
+        <div class="caixa">
+            <div id="div_mensagem2"></div>
+            <div id="div_mensagem"></div>
+            <div class="btns">
+            <button onclick="Mostrarfusao()" class="btn-fusao">Fusão</button>
+            <button onclick="resetarFusao()" class="btn-fusao">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- simulador fim -->
+
+    <!--footer inicio-->
+    <!-- <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
+        </div>
+    </div> -->
+    <!--footer fim-->
+
+</body>
+<script>
+    // let teste = {
+
+    //     "rose": {
+    //         "perola": {
+    //             'nome': "Quartzo Arco-Íris",
+    //             'url': "assets/imgs/Rainbow_Quartz_by_Lenhi.webp"
+    //         }
+    //     },
+
+    //     "perola": {
+    //         "rose": { 
+    //             'nome': "Quartzo Arco-Íris",
+    //             'url': "assets/imgs/Rainbow_Quartz_by_Lenhi.webp"
+    //         }
+    //     },
+
+    //     "garnet": {
+    //         "perola": {
+    //             'nome': "Sardonix",
+    //             'url': "assets/imgs/Sardonyx.webp"
+    //         }
+    //     },
+    //     "perola": {
+    //         "garnet": {
+    //             'nome': "Sardonix",
+    //             'url': "assets/imgs/Sardonyx.webp"
+    //         }
+    //     },
+    //     "lapis": {
+    //         "jasper": {
+    //             'nome': "Malaquita",
+    //             'url': "assets/imgs/Malaquita.webp"
+    //         }
+    //     },
+    //     "jasper": {
+    //         "lapis": {
+    //             'nome': "Malaquita",
+    //             "url": "assets/imgs/Malaquita.webp"
+    //         }
+    //     },
+    //     "ametista": {
+    //         "garnet": {
+    //             'nome': "Sugilite",
+    //             'url': "assets/imgs/Sugilite.webp"
+    //         }
+    //     },
+    //     "garnet": {
+    //         "ametista": {
+    //             'nome': "Sugilite",
+    //             'url': "assets/imgs/Sugilite.webp"
+    //         }
+    //     },
+
+    //     "ruby": {
+    //         "safira": {
+    //             'nome': "Garnet",
+    //             'url': "assets/imgs/garnet-fusao.webp"
+    //         }
+    //     },
+
+    //     "safira": {
+    //         "ruby": {
+    //             'nome': "Garnet",
+    //             'url': "assets/imgs/garnet-fusao.webp"
+    //         }
+    //     },
+
+    //     "ametista": {
+    //         "perola": {
+    //             'nome': "Opal",
+    //             'url': "assets/imgs/opal.webp"
+    //         }
+    //     },
+    //     "perola": {
+    //         "ametista": {
+    //             'nome': "Opal",
+    //             'url': "assets/imgs/opal.webp"
+    //         }
+    //     },
+    //     "steven": {
+    //         "ametista": {
+    //             'nome': "Quartzo Fumê",
+    //             'url': "assets/imgs/Smoky_Quartz.webp"
+    //         }
+    //     },
+    //     "ametista": {
+    //         "steven": {
+    //             'nome': "Quartzo Fumê",
+    //             'url': "assets/imgs/Smoky_Quartz.webp"
+    //         }
+    //     },
+    //     "steven": {
+    //         "perola": {
+    //             'nome': "Quartzo Arco-Íris 2.0",
+    //             'url': "assets/imgs/Rainbow2.0SUF.webp"
+    //         }
+    //     },
+    //     "perola": {
+    //         "steven": {
+    //             'nome': "Quartzo Arco-Íris 2.0",
+    //             'url': "assets/imgs/Rainbow2.0SUF.webp"
+    //         }
+    //     }
+
+    // }
+
+    let teste = {
+        "steven": {
+            "perola": {
+                'nome': "Quartzo Arco-Íris 2.0",
+                'url': "assets/imgs/Rainbow2.0SUF.webp"
+            },
+            "ametista": {
+                'nome': "Quartzo Fumê",
+                'url': "assets/imgs/Smoky_Quartz.webp"
+            }
+        },
+
+        "ametista": {
+            "steven": {
+                'nome': "Quartzo Fumê",
+                'url': "assets/imgs/Smoky_Quartz.webp"
+            },
+            "perola": {
+                'nome': "Opal",
+                'url': "assets/imgs/opal.webp"
+            },
+            "garnet": {
+                'nome': "Sugilite",
+                'url': "assets/imgs/Sugilite.webp"
+            }
+        },
+        "perola": {
+            "ametista": {
+                'nome': "Opal",
+                'url': "assets/imgs/opal.webp"
+            },
+            "steven": {
+                'nome': "Quartzo Arco-Íris 2.0",
+                'url': "assets/imgs/Rainbow2.0SUF.webp"
+            },
+            "garnet": {
+                'nome': "Sardonix",
+                'url': "assets/imgs/Sardonyx.webp"
+            },
+            "rose": { 
+                'nome': "Quartzo Arco-Íris",
+                'url': "assets/imgs/Rainbow_Quartz_by_Lenhi.webp"
+            }
+        },
+        "garnet": {
+            "ametista": {
+                'nome': "Sugilite",
+                'url': "assets/imgs/Sugilite.webp"
+            },
+            "perola": {
+                'nome': "Sardonix",
+                'url': "assets/imgs/Sardonyx.webp"
+            }
+
+        },
+        "safira":{
+            "ruby": {
+                'nome': "Garnet",
+                'url': "assets/imgs/garnet-fusao.webp"
+            }
+        },
+        "ruby":{
+            "safira": {
+                'nome': "Garnet",
+                'url': "assets/imgs/garnet-fusao.webp"
+            }
+        },
+        "jasper":{
+            "lapis": {
+                'nome': "Malaquita",
+                "url": "assets/imgs/Malaquita.webp"
+            }
+        },
+        "lapis":{
+            "jasper": {
+                'nome': "Malaquita",
+                'url': "assets/imgs/Malaquita.webp"
+            }
+        },
+        "rose":{
+            "perola": {
+                'nome': "Quartzo Arco-Íris",
+                'url': "assets/imgs/Rainbow_Quartz_by_Lenhi.webp"
+            }
+        }
+
+    }
+
+
+    let selecao1 = "";
+    let selecao2 = "";
+    let contador = 0;
+    function btn_ametista() {
+        if (contador === 0) {
+            selecao1 = "ametista";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "ametista";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    }
+    function btn_steven() {
+        if (contador === 0) {
+            selecao1 = "steven";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "steven";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    } function btn_perola() {
+        if (contador === 0) {
+            selecao1 = "perola";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "perola";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    } function btn_garnet() {
+        if (contador === 0) {
+            selecao1 = "garnet";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "garnet";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    } function btn_lapis() {
+        if (contador === 0) {
+            selecao1 = "lapis";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "lapis";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    } function btn_jasper() {
+        if (contador === 0) {
+            selecao1 = "jasper";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "jasper";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    } function btn_ruby() {
+        if (contador === 0) {
+            selecao1 = "ruby";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "ruby";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    }
+    function btn_safira() {
+        if (contador === 0) {
+            selecao1 = "safira";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "safira";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    }
+
+    function btn_rose() {
+        if (contador === 0) {
+            selecao1 = "rose";
+            contador++
+        } else if (contador === 1) {
+            selecao2 = "rose";
+            contador++
+        } else {
+            alert("Numero máximo de cartas alcansado! ")
+        }
+    }
+
+    function Mostrarfusao() {
+        console.log(selecao1)
+        console.log(selecao2)
+
+        if (contador <= 1) {
+            alert("Cartas não selecionadas!")
+            return;
+        }else if(!(selecao2 in teste[selecao1])){
+            alert("Não existe tal fusão!")
+            console.log("Oi")
+        }else{
+        
+        div_mensagem2.innerHTML = `${teste[selecao1][selecao2]["nome"]}`;
+
+        div_mensagem.innerHTML = `<img src="${teste[selecao1][selecao2]["url"]}" alt="quartzo">`;
+        
+
+        console.log()
+        }
+    }
+
+    function resetarFusao() {
+        selecao1 = "";
+        selecao2 = "";
+        contador = 0;
+        div_mensagem.innerHTML = "";
+        div_mensagem2.innerHTML = "";
+    }
+
+</script>
+
+</html>
