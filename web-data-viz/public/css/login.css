@@ -168,6 +168,9 @@ margin-bottom: 20px;
 .cadastre_se{
    background-color: transparent;
    border: none;
+   color: #006adb;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .cadastre_se a{
