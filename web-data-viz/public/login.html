@@ -19,7 +19,7 @@
 
     <!--Header-->
 
-    <div class="header">
+    <!-- <div class="header">
         <div class="container">
             <h1 class="titulo"><img src="assets/imgs/logo.png" alt="logo" width="150px"></h1>
             <ul class="navbar">
@@ -29,14 +29,14 @@
                 <li>
                     <a href="fusoes.html">Fusão</a>
                 </li>
-                <!-- <li>|</li> -->
+                <li>|</li> 
                 <li class="agora">Login</li>
                 <li>
                     <a href="cadastro.html">Cadastro</a>
                 </li>
             </ul>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -52,10 +52,12 @@
                 <span id="mensagem_erro"></span>
             </div>
         </div>
-        <div class="container-cadastro">
+        <div class="container_cadastro">
+            <img src="assets/imgs/Steven_Universe_logo.webp" alt="logo" width="400px">
             <div class="card card-cadastro">
-                <h2>Criar conta</h2>
-                <span>Junte-se ao universo!</span>
+                <h2>Login</h2>
+                <p class="p1">Bem-vindo(a) de volta!</p>
+                <p class="p2">Vamos juntos salvar o dia?</p>
                 <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
@@ -66,7 +68,10 @@
                 <div class="campo">
                     <input class="meu-input" id="senha_input" type="password" placeholder="Senha" />
                 </div>
+                <div class="bnt_login">
                 <button class="botao" onclick="cadastrar()">Cadastrar</button>
+                <button class="cadastre_se"><a href="cadastro.html">Não tem cadastro ainda? Cadastre-se</a></button>
+                </div>
             </div>
             <div id="div_aguardar" class="loading-div">
                 <img src="./assets/aguarde-pink2.gif" id="loading-gif" />
