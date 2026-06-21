@@ -15,9 +15,9 @@ body {
 
 :root {
   --tamanho-header: 100px;
-  --tamanho-banner: calc(117vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(117vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
 
@@ -87,22 +87,23 @@ body {
 }
 
 .container_cadastro img{
-  margin-bottom: 730px;
+  margin-bottom: 530px;
   position: fixed;
 }
 
 .card-cadastro h2{
- font-size: 80px; 
+ font-size: 70px; 
  margin: 0;
  text-align: center;
- color: #460078;
-margin-bottom: 30px;
+ color: #71baff;
+ margin-top: 70px;
+margin-bottom: 20px;
 }
 
 .card-cadastro .p1{
   font-size: 30px;
   text-align: center;
-  color: #460078;
+  color: #71baff;
   margin: 0;
   font-weight: 600;
 }
@@ -110,9 +111,9 @@ margin-bottom: 30px;
 .card-cadastro .p2{
   font-size: 25px;
   text-align: center;
-  color: #460078;
+  color: #71baff;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 20px;
 }
 
@@ -122,6 +123,7 @@ margin-bottom: 30px;
   justify-content: center;
   padding: 10px;
   margin-top: 5x;
+  margin-left: -34px;
 }
 
 .meu-input{
