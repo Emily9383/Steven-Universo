@@ -21,6 +21,7 @@ body {
   width: 80%;
   margin: auto;
   height: 100%;
+  
 }
 
 .header {
@@ -80,20 +81,29 @@ body {
   background-size: cover;
 }
 
-.banner .container {
+.container2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.banner .container2 {
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.banner .container p {
+.banner .container2 p {
   width: 50%;
   margin: 0;
   padding: 0;
-  font-size: 36px;
+  font-size: 45px;
+  text-shadow: 1px 0px 52px rgba(0, 0, 0, 0.775);
 }
 
-.banner .container span {
+.banner .container2 span {
   font-weight: 800;
 }
 
@@ -104,7 +114,7 @@ body {
   display: flex;
 }
 
-.social .container {
+.social .container3 {
   justify-content: center;
 }
 
@@ -112,7 +122,7 @@ body {
   width: 170px;
 }
 
-.social .container .boxes {
+.social .container3 .boxes {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -129,7 +139,7 @@ body {
   align-items: center;
 }
 
-.container .card card-cadastro{
+.container3 .card card-cadastro{
   width: 50%;
 }
 
@@ -148,12 +158,12 @@ body {
   font-size: 15px;
 }
 
-.footer .container {
+.footer .container4 {
   justify-content: center;
   text-align: center;
 }
 
-.footer .container .version {
+.footer .container4 .version {
   font-size: 12px;
 }
 

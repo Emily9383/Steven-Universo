@@ -28,53 +28,6 @@ body {
   height: 100%;
 }
 
-.header {
-  height: var(--tamanho-header);
-  width: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 9999;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-}
-
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-.header a {
-  text-decoration: none;
-  color: #54a4ff;
-  
-}
-
-.agora {
-  font-weight: 800;
-  color: pink;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  list-style: none;
-  color: #ffffff;
-  font-size: 22px;
-  gap: 30px;
-}
-
-
-
-.header h1 {
-  margin: 0;
-}
 
 
 .container_cadastro{
@@ -87,7 +40,7 @@ body {
 }
 
 .container_cadastro img{
-  margin-bottom: 530px;
+  margin-bottom: 560px;
   position: fixed;
 }
 
