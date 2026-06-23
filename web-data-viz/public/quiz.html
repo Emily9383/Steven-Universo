@@ -10,23 +10,44 @@
 
 
 <body onload="onloadEsconder()">
+
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo"><img src="assets/imgs/logo.png" alt="logo" width="150px"></h1>
+            <ul class="navbar">
+                <li class="agora">Home</li>
+
+                <li>
+                    <a href="fusoes.html">Fusão</a>
+                </li>
+                <!-- <li>|</li> -->
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <div id="pontuacaoEJogo">
         <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+        <div id="pontuacao">
+            <div id="pontuacaoDuranteJogo">
+                <span>Quantidade de acertos: <span id="spanCertas"></span></span>
+                <span>Quantidade de erros: <span id="spanErradas"></span></span>
             </div>
-            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+            <div id="pontuacaoFinalJogo">
+                <span id="pontuacaoFinal">Pontuação Final:
                     <span id="spanPontuacaoFinal">***</span>
                 </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
+                <span id="msgFinal">***</span>
             </div>
         </div>
 
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+        <div id="jogo">
 
             <div id="infoQuestao" class="padding-8">
                 <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
@@ -41,7 +62,7 @@
                 <span><em>Escolha uma opção dentre as abaixo:</em></span>
             </div>
 
-            <div id="opcoes" class="flex-colunar padding-8">
+            <div id="opcoes">
                 <span>
                     <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
                     <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
@@ -60,7 +81,7 @@
                 </span>
             </div>
 
-            <div id="botoes" class="flex-colunar padding-8">
+            <div id="botoes">
                 <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
                 <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
                 <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
@@ -76,31 +97,115 @@
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Qual é a primeira música cantada na série?",
+            alternativaA: "Minha van vai pro seu coração",
+            alternativaB: "Mulher Gigante",
+            alternativaC: "Biscoito Gatinho",
+            alternativaD: "Forte de Verdade",
             alternativaCorreta: "alternativaC"
         },
 
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Em que ano Steven Universo foi criado?",
+            alternativaA: "2013",
+            alternativaB: "2020",
+            alternativaC: "2017",
+            alternativaD: "2000",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Em que episódio Peridot apareceu pela primeira vez?",
+            alternativaA: "Retorno",
+            alternativaB: "O hóspede",
+            alternativaC: "A mensagem",
+            alternativaD: "Transportadores",
             alternativaCorreta: "alternativaD"
         },
 
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
+            pergunta: "Quais gems formam a Garnet",
+            alternativaA: "Steven e Ametista",
+            alternativaB: "Peridot e Lápis Lazuli",
+            alternativaC: "Rubi e Safira",
+            alternativaD: "Pérola e Ametista",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Quantos anos Steven tem no filme 'Steven Universe: The Movie'",
+            alternativaA: "18 anos",
+            alternativaB: "14 anos",
+            alternativaC: "15 anos",
+            alternativaD: "16 anos",
             alternativaCorreta: "alternativaD"
-        }
+        },
+
+        {
+            pergunta: "Qual a comida favorita da infância de Steven",
+            alternativaA: "Rosquinha",
+            alternativaB: "Batata frita",
+            alternativaC: "Pizza de peixe",
+            alternativaD: "Biscoito gatinho",
+            alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Qual o nome da melhor amifa de Steven",
+            alternativaA: "Elle",
+            alternativaB: "Connie",
+            alternativaC: "Anna",
+            alternativaD: "Darcy",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Que lema o Greg (Pai de Steven) ensinou para ele?",
+            alternativaA: "Um universo de possibilidades sempre começa com uma canção.",
+            alternativaB: "Se a vida te der limões, faça deles uma van de rock.",
+            alternativaC: "Se tudo fosse perfeito não haveria cachorro-quente.",
+            alternativaD: "Nada é perfeito, nem mesmo batata frita!",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "No episódio 'Sr Greg' Steven, Pérola e Greg vão á um hotel. Qual é o nome desse hotel?",
+            alternativaA: "Hotel Plaza.",
+            alternativaB: "Hotel Dance.",
+            alternativaC: "Hotel Beach City.",
+            alternativaD: "Le Hotel.",
+            alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Qual é o nome da Criador (a) da série?",
+            alternativaA: "Tina Sugter",
+            alternativaB: "Rebecca Sugar",
+            alternativaC: "Robert Pouth",
+            alternativaD: "Don Clark",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Por que Ametista é baixa?",
+            alternativaA: "Ela foi feita para ser alvo de piadas em Homeworld.",
+            alternativaB: "Ela é igual a todas as Ametistas.",
+            alternativaC: "Ela não foi amada por isso encolheu.",
+            alternativaD: "Ela passou tempo demais no solo e nasceu defeituosa.",
+            alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Ocorreu uma guerra Gem, ela durou quanto tempo?",
+            alternativaA: "200 mil anos.",
+            alternativaB: "284 mil anos.",
+            alternativaC: "Mil anos.",
+            alternativaD: "90 mil anos.",
+            alternativaCorreta: "alternativaC"
+        },
+
+
+
 
     ]
 
@@ -271,14 +376,14 @@
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
 
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        document.getElementById('jogo').classList.add("text-new-gray")
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
