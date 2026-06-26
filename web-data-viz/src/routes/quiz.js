@@ -8,4 +8,8 @@ router.get("/totalquiz/:idquiz", function (req, res) {
     quizController.totalquiz(req, res);
 })
 
+router.post("/quizBusca/:idquiz", function (req, res) {
+    quizController.quizBuscar(req, res);
+})
+
 module.exports = router;

@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas(idAquario, limite_linhas) {
 
-    var instrucaoSql = `select  acertos, erros, DATE_FORMAT(quizData,"%d-%m-%Y %H-%i") as quizData from 
+    var instrucaoSql = `select  acertos, erros, DATE_FORMAT(quizData,"%d-%m-%Y %H:%i") as quizData from 
                          quiz where fkquiz = ${idAquario}
                          order by idquiz desc limit 2`;
 
@@ -12,7 +12,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
 
 function buscarMedidasEmTempoReal(idAquario) {
 
-    var instrucaoSql = `select  acertos, erros, DATE_FORMAT(quizData,"%d-%m-%Y %H-%i") as quizData from quiz 
+    var instrucaoSql = `select  acertos, erros, DATE_FORMAT(quizData,"%d-%m-%Y %H:%i") as quizData from quiz 
                         where fkquiz = ${idAquario} 
                         order by idquiz desc limit 1;`;
 

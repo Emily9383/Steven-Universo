@@ -30,5 +30,6 @@ idquiz int primary key auto_increment not null,
 acertos int not null,
 erros int not null,
 fkquiz int,
+quizData datetime default current_timestamp,
 constraint quiz_usuario foreign key (fkquiz) references usuario(idusuario)
 );

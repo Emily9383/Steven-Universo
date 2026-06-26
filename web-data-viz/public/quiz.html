@@ -24,17 +24,18 @@
 
                 <div class="btn-nav"">
 
-                    <a href="dashboard/dashboard.html"><button style="background-color: rgb(218, 70, 255);">Gráficos</button></a>
+                    <a href=" dashboard/dashboard.html"><button
+                        style="background-color: rgb(218, 70, 255);">Gráficos</button></a>
 
                 </div>
-                <div class="btn-nav" >
+                <div class="btn-nav">
 
                     <button style="background-color: #ac85ff;">Quiz</button>
 
                 </div>
 
                 <div class="btn-logout" onclick="limparSessao()">
-                    <h3>Sair</h3>
+                   <a href="index.html" style="text-decoration: none; color: #fff;"> <h3>Sair</h3></a>
                 </div>
 
             </div>
@@ -43,20 +44,23 @@
         <div id="pontuacaoEJogo">
             <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-            
+
             <div id="jogo">
 
                 <div id="infoQuestao" class="padding-8">
-                    <span style="color: #3d2c62; font-size: 25px; font-weight: 600;">Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                    <span style="color: #3d2c62; font-size: 25px; font-weight: 600;">Questão atual: <span
+                            id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
                         questões.</span>
                 </div>
 
                 <div id="perguntaDaQuestaoAtual" class="padding-8">
-                    <span id="spanQuestaoExibida" class="text-bold" style=" color: #160045; font-size: 30px; font-weight: 600;"></span>
+                    <span id="spanQuestaoExibida" class="text-bold"
+                        style=" color: #160045; font-size: 30px; font-weight: 600;"></span>
                 </div>
 
                 <div id="infoAlternativas" class="padding-8">
-                    <span style="color: #970050; font-size: 20px; font-weight: 600;"><em>Escolha uma opção dentre as abaixo:</em></span>
+                    <span style="color: #970050; font-size: 20px; font-weight: 600;"><em>Escolha uma opção dentre as
+                            abaixo:</em></span>
                 </div>
 
                 <div id="opcoes">
@@ -88,7 +92,7 @@
             </div>
             <div id="pontuacao">
                 <div id="pontuacaoDuranteJogo">
-                    <span style="margin-top: 30px;" >Quantidade de acertos: <span id="spanCertas"></span></span>
+                    <span style="margin-top: 30px;">Quantidade de acertos: <span id="spanCertas"></span></span>
                     <span style="margin-top: -0px;">Quantidade de erros: <span id="spanErradas"></span></span>
                 </div>
                 <div id="pontuacaoFinalJogo">
@@ -100,7 +104,7 @@
                 </div>
             </div>
         </div>
-        
+
 
 
     </div>
@@ -109,8 +113,8 @@
 </html>
 <script>
 
-     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-     
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
     const listaDeQuestoes = [
 
         {
@@ -406,45 +410,46 @@
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
-        fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nomeVar,
-                    emailServer: emailVar,
-                    senhaServer: senhaVar,
-                    
-                }),
+        let sessionStorageIdusuario = sessionStorage.ID_USUARIO;
+        fetch("/quiz/quizBuscar/:idquiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                acertosServer: certas,
+                errosServer: erradas,
+                idUsuarioServer: sessionStorageIdusuario
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    // mensagem_erro.innerHTML =
+                    //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    // setTimeout(() => {
+                    //     window.location = "login.html";
+                    // }, "2000");
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
             })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
 
-                    if (resposta.ok) {
-                        cardErro.style.display = "block";
-
-                        // mensagem_erro.innerHTML =
-                        //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                        setTimeout(() => {
-                            window.location = "login.html";
-                        }, "2000");
-
-                        limparFormulario();
-                        finalizarAguardar();
-                    } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                    finalizarAguardar();
-                });
-
-            return false;
+        return false;
 
     }
 </script>
