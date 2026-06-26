@@ -159,6 +159,11 @@ font-weight: normal;
   margin-top: 10px;
 }
 
+#graficos{
+  position: absolute;
+  margin-bottom: 2000px;
+  width: 50%;
+}
 /* .label-captura {
   display: flex;
   justify-content: center;
