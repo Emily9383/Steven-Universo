@@ -269,3 +269,8 @@ width: 50%;
     transform: rotate(25deg)
   }
 }
+
+#div_erros_login{
+  width: 50%;
+  height: 30vh;
+}

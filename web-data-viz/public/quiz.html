@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="assets/icon/icon-site.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo - Quiz</title>
+    <title>Quiz</title>
     <link rel="stylesheet" href="css/quiz.css">
 </head>
 
@@ -24,7 +25,7 @@
 
                 <div class="btn-nav"">
 
-                    <a href=" dashboard/dashboard.html"><button
+                    <a href="dashboard/dashboard.html"><button
                         style="background-color: rgb(218, 70, 255);">Gráficos</button></a>
 
                 </div>
@@ -35,9 +36,10 @@
                 </div>
 
                 <div class="btn-logout" onclick="limparSessao()">
-                   <a href="index.html" style="text-decoration: none; color: #fff;"> <h3>Sair</h3></a>
+                    <a href="index.html" style="text-decoration: none; color: #fff;">
+                        <h3>Sair</h3>
+                    </a>
                 </div>
-
             </div>
         </div>
 
@@ -101,6 +103,7 @@
                     </span>
                     <br>
                     <span id="msgFinal"><br></span>
+                    <span id="porcentagem_acertos"></span>
                 </div>
             </div>
         </div>
@@ -142,88 +145,88 @@
             alternativaC: "A mensagem",
             alternativaD: "Transportadores",
             alternativaCorreta: "alternativaD"
-        },
+        }
 
-        {
-            pergunta: "Quais gems formam a Garnet",
-            alternativaA: "Steven e Ametista",
-            alternativaB: "Peridot e Lápis Lazuli",
-            alternativaC: "Rubi e Safira",
-            alternativaD: "Pérola e Ametista",
-            alternativaCorreta: "alternativaC"
-        },
+        // {
+        //     pergunta: "Quais gems formam a Garnet",
+        //     alternativaA: "Steven e Ametista",
+        //     alternativaB: "Peridot e Lápis Lazuli",
+        //     alternativaC: "Rubi e Safira",
+        //     alternativaD: "Pérola e Ametista",
+        //     alternativaCorreta: "alternativaC"
+        // },
 
-        {
-            pergunta: "Quantos anos Steven tem no filme 'Steven Universe: The Movie'",
-            alternativaA: "18 anos",
-            alternativaB: "14 anos",
-            alternativaC: "15 anos",
-            alternativaD: "16 anos",
-            alternativaCorreta: "alternativaD"
-        },
+        // {
+        //     pergunta: "Quantos anos Steven tem no filme 'Steven Universe: The Movie'",
+        //     alternativaA: "18 anos",
+        //     alternativaB: "14 anos",
+        //     alternativaC: "15 anos",
+        //     alternativaD: "16 anos",
+        //     alternativaCorreta: "alternativaD"
+        // },
 
-        {
-            pergunta: "Qual a comida favorita da infância de Steven",
-            alternativaA: "Rosquinha",
-            alternativaB: "Batata frita",
-            alternativaC: "Pizza de peixe",
-            alternativaD: "Biscoito gatinho",
-            alternativaCorreta: "alternativaD"
-        },
+        // {
+        //     pergunta: "Qual a comida favorita da infância de Steven",
+        //     alternativaA: "Rosquinha",
+        //     alternativaB: "Batata frita",
+        //     alternativaC: "Pizza de peixe",
+        //     alternativaD: "Biscoito gatinho",
+        //     alternativaCorreta: "alternativaD"
+        // },
 
-        {
-            pergunta: "Qual o nome da melhor amifa de Steven",
-            alternativaA: "Elle",
-            alternativaB: "Connie",
-            alternativaC: "Anna",
-            alternativaD: "Darcy",
-            alternativaCorreta: "alternativaB"
-        },
+        // {
+        //     pergunta: "Qual o nome da melhor amifa de Steven",
+        //     alternativaA: "Elle",
+        //     alternativaB: "Connie",
+        //     alternativaC: "Anna",
+        //     alternativaD: "Darcy",
+        //     alternativaCorreta: "alternativaB"
+        // },
 
-        {
-            pergunta: "Que lema o Greg (Pai de Steven) ensinou para ele?",
-            alternativaA: "Um universo de possibilidades sempre começa com uma canção.",
-            alternativaB: "Se a vida te der limões, faça deles uma van de rock.",
-            alternativaC: "Se tudo fosse perfeito não haveria cachorro-quente.",
-            alternativaD: "Nada é perfeito, nem mesmo batata frita!",
-            alternativaCorreta: "alternativaC"
-        },
+        // {
+        //     pergunta: "Que lema o Greg (Pai de Steven) ensinou para ele?",
+        //     alternativaA: "Um universo de possibilidades sempre começa com uma canção.",
+        //     alternativaB: "Se a vida te der limões, faça deles uma van de rock.",
+        //     alternativaC: "Se tudo fosse perfeito não haveria cachorro-quente.",
+        //     alternativaD: "Nada é perfeito, nem mesmo batata frita!",
+        //     alternativaCorreta: "alternativaC"
+        // },
 
-        {
-            pergunta: "No episódio 'Sr Greg' Steven, Pérola e Greg vão á um hotel. Qual é o nome desse hotel?",
-            alternativaA: "Hotel Plaza.",
-            alternativaB: "Hotel Dance.",
-            alternativaC: "Hotel Beach City.",
-            alternativaD: "Le Hotel.",
-            alternativaCorreta: "alternativaD"
-        },
+        // {
+        //     pergunta: "No episódio 'Sr Greg' Steven, Pérola e Greg vão á um hotel. Qual é o nome desse hotel?",
+        //     alternativaA: "Hotel Plaza.",
+        //     alternativaB: "Hotel Dance.",
+        //     alternativaC: "Hotel Beach City.",
+        //     alternativaD: "Le Hotel.",
+        //     alternativaCorreta: "alternativaD"
+        // },
 
-        {
-            pergunta: "Qual é o nome da Criador (a) da série?",
-            alternativaA: "Tina Sugter",
-            alternativaB: "Rebecca Sugar",
-            alternativaC: "Robert Pouth",
-            alternativaD: "Don Clark",
-            alternativaCorreta: "alternativaB"
-        },
+        // {
+        //     pergunta: "Qual é o nome da Criador (a) da série?",
+        //     alternativaA: "Tina Sugter",
+        //     alternativaB: "Rebecca Sugar",
+        //     alternativaC: "Robert Pouth",
+        //     alternativaD: "Don Clark",
+        //     alternativaCorreta: "alternativaB"
+        // },
 
-        {
-            pergunta: "Por que Ametista é baixa?",
-            alternativaA: "Ela foi feita para ser alvo de piadas em Homeworld.",
-            alternativaB: "Ela é igual a todas as Ametistas.",
-            alternativaC: "Ela não foi amada por isso encolheu.",
-            alternativaD: "Ela passou tempo demais no solo e nasceu defeituosa.",
-            alternativaCorreta: "alternativaD"
-        },
+        // {
+        //     pergunta: "Por que Ametista é baixa?",
+        //     alternativaA: "Ela foi feita para ser alvo de piadas em Homeworld.",
+        //     alternativaB: "Ela é igual a todas as Ametistas.",
+        //     alternativaC: "Ela não foi amada por isso encolheu.",
+        //     alternativaD: "Ela passou tempo demais no solo e nasceu defeituosa.",
+        //     alternativaCorreta: "alternativaD"
+        // },
 
-        {
-            pergunta: "Ocorreu uma guerra Gem, ela durou quanto tempo?",
-            alternativaA: "200 mil anos.",
-            alternativaB: "284 mil anos.",
-            alternativaC: "Mil anos.",
-            alternativaD: "90 mil anos.",
-            alternativaCorreta: "alternativaC"
-        },
+        // {
+        //     pergunta: "Ocorreu uma guerra Gem, ela durou quanto tempo?",
+        //     alternativaA: "200 mil anos.",
+        //     alternativaB: "284 mil anos.",
+        //     alternativaC: "Mil anos.",
+        //     alternativaD: "90 mil anos.",
+        //     alternativaCorreta: "alternativaC"
+        // },
 
 
 
@@ -396,7 +399,7 @@
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+        porcentagem_acertos.innerHTML += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
@@ -405,13 +408,20 @@
 
         document.getElementById('jogo').classList.add("text-new-gray")
 
+
+        quizBuscar()
         btnProx.disabled = true
         btnSubmeter.disabled = true
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
+
+
+    }
+
+    function quizBuscar() {
         let sessionStorageIdusuario = sessionStorage.ID_USUARIO;
-        fetch("/quiz/quizBuscar/:idquiz", {
+        fetch("/quiz/quizBuscar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -434,22 +444,26 @@
                     // mensagem_erro.innerHTML =
                     //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-                    // setTimeout(() => {
-                    //     window.location = "login.html";
-                    // }, "2000");
+                    setTimeout(() => {
+                        window.location = "dashboard/dashboard.html";
+                    }, "2000");
 
-                    // limparFormulario();
-                    // finalizarAguardar();
+                    
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                // finalizarAguardar();
+                
             });
 
         return false;
-
     }
+
+    function limparSessao() {
+    sessionStorage.clear();
+    window.location = "index.html";
+}
+
 </script>

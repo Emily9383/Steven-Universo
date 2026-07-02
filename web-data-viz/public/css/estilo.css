@@ -46,12 +46,12 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #54a4ff;
+  color: #0077ff;
   
 }
 
 .agora {
-  font-weight: 800;
+  font-weight: 700;
   color: pink;
 }
 
@@ -64,6 +64,7 @@ body {
   color: #ffffff;
   font-size: 22px;
   gap: 30px;
+  margin-right: 100px;
 }
 
 

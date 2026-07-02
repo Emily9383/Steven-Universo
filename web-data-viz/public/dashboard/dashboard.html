@@ -2,11 +2,12 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/icon-site.png" type="image/x-icon">
     <meta charset="UTF-8">
+    <link rel="icon" href="assets/icon/icon-site.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Dashboards</title>
 
 
     <link rel="stylesheet" href="../css/dashboards.css">
@@ -64,9 +65,8 @@
         <div class="dashboard">
             <h1>Dashboard</h1>
             <div class="kpis">
-                <div class="campo">
-                    <h3>Total de Fusões</h3>
-                    <h2 style="color: #1800ad;">10</h2>
+                <div class="campo" id="media_acertos">
+                    
                 </div>
 
                 <div class="campo" id="div_total">
@@ -91,6 +91,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="Rank">
+                    <h1>Acertos vs Erros</h1>
+                    <div id="grafico-rank">
+                    </div>
+                </div>
         </div>
 
 
@@ -122,6 +128,9 @@
 
                     total_acertos.innerHTML = `<h3>Acertos máximos</h3>
                     <h2 style=" color: #d300cb;">${resposta[0]["acertos_max"]}</h2>`
+
+                    media_acertos.innerHTML = `<h3>Média de acertos</h3>
+                   <h2 style="color: #1800ad;">${resposta[0]["media"]}</h2>`
 
                 });
             } else {

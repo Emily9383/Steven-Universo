@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Músicas</title>
+    <link rel="stylesheet" href="css/playlist.css">
+    <link rel="icon" href="assets/icon/icon-site.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo"><img src="assets/imgs/logo.png" alt="logo" width="150px"></h1>
+            <ul class="navbar">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="fusoes.html">Fusão</a>
+                </li>
+
+                <li class="agora">Músicas</li>
+
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="divisao">
+        <div class="versoes">
+            <button class="ativo">Português</button>
+            <a href="html Musicas En/Aqui foi um Pensamento.html"><button class="en">Inglês</button></a>
+        </div>
+        <div class="caixa">
+            <audio id="som" src="assets/musicas/Verdadeiro Amor.mp3"></audio>
+            <div id="playlist">
+                <img id="img-musica" src="assets/imgs/verdadeiro-amor.webp" alt="imagem">
+                <div id="nome-musica">Verdadeiro Amo</div>
+                <div id="artista">Steven Universo</div>
+
+
+                <div id="botoes">
+                    <i class="fa-solid fa-shuffle"></i>
+                    <a href="Tudo permanece.html"><i id="seta-esquerda" class="fa-solid fa-backward-step fa-2x"></i></a>
+                    <button onclick="tocarMusica()"><i class="fa-solid fa-circle-play fa-3x"></i></button>
+                    <a href="Aqui foi um Pensamento.html"><i id="seta-direita" class="fa-solid fa-forward-step fa-2x"></i></a>
+                    <button onclick="repetir()"><i id="repetir" class="fa-solid fa-repeat"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="musicas">
+            <a href="Aqui foi um Pensamento.html"><span>1</span>Aqui foi um Pensamento</a>
+            <a href="Forte de Verdade.html"><span>2</span>Forte de Verdade</a>
+            <a href="Mulher Gigante.html"><span>3</span>Mulher Gigante</a>
+            <a href="Nós Somos as Crystal Gems.html"><span>4</span>Nós Somos as Crystal Gems</a>
+            <a href="Outros Amigos.html"><span>5</span>Outros Amigos</a>
+            <a href="Pra que Sentimento Azul.html"><span>6</span>Pra que Sentimento Azul</a>
+            <a href="Que Posso Fazer Por Você.html"><span>7</span>Que Posso Fazer Por Você</a>
+            <a href="Queremos adora-la.html"><span>8</span>Queremos adora-la</a>
+            <a href="Tudo permanece.html"><span>9</span>Tudo permanece</a>
+            <p class="tocando"> <span>10</span>Verdadeiro Amor</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function tocarMusica() {
+        let musica = document.getElementById("som")
+
+        if (musica.paused) {
+            musica.play();
+        } else {
+            musica.pause();
+        }
+    }
+
+    function repetir() {
+        let musica = document.getElementById("som")
+
+        musica.currentTime = 0;
+
+        musica.play();
+    }
+</script>
+
+</html>

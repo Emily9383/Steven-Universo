@@ -37,8 +37,8 @@ function quizBuscar(req, res) {
         //     res.status(400).send("Sua empresa a vincular está undefined!");
     } else {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.quizBuscar(acertos, erros, idusuario)
+        // Passe os valores como parâmetro e vá para o arquivo quizModel.js
+        quizModel.quizBuscar(acertos, erros, idusuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
