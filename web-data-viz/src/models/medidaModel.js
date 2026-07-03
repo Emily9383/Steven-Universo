@@ -20,7 +20,20 @@ function buscarMedidasEmTempoReal(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarMedidasDeRank() {
+
+    var instrucaoSql = `select u.nome, max(q.acertos) as acertos_max 
+                        from usuario as u 
+                        inner join quiz as q on 
+                        u.idusuario = q.fkquiz 
+                        group by u.idusuario, u.nome;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarMedidasDeRank
 }

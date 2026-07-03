@@ -77,9 +77,10 @@ body {
 
 #img-musica{
     height: 250px;
-    width: 250px;
+    width: 280px;
     border-radius: 10px;
      font-family: "Fredoka", sans-serif;
+     
 }
 
 .caixa{
@@ -144,7 +145,7 @@ button{
 .musicas{
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 82vh;
     width: 40%;
     background-color: #00208a81;
     margin-top: 100px;
@@ -158,9 +159,9 @@ button{
 .musicas a{
     text-decoration: none;
     width: 85%;
-    height: 6vh;
+    height: 5.5vh;
     background-color: #89afff;
-    margin-top: 10px;
+    margin-top: 8px;
     color: #000;
     border-radius: 6px;
     display: flex;
@@ -168,15 +169,16 @@ button{
     padding: 0 10px;
     color: #ffffff;
     font-weight: 500;
+    margin-bottom: 5px;
 
 }
 
 .tocando{
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 0;
     text-decoration: none;
     width: 85%;
-    height: 6vh;
+    height: 5.5vh;
     background-color: #ffc3fd;
     color: #000;
     border-radius: 6px;
@@ -190,7 +192,7 @@ button{
 
 span{
     margin-right: 20px;
-    margin-left: 5px;
+    margin-left: 6px;
 }
 
 .ativo{
@@ -220,3 +222,8 @@ span{
     border: 3px solid #001aaa;
     color: #000970;
 }
+
+.espaco{
+    margin-right: 13px;
+}
+

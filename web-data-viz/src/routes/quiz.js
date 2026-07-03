@@ -8,8 +8,12 @@ router.get("/totalquiz/:idquiz", function (req, res) {
     quizController.totalquiz(req, res);
 })
 
-router.post("/quizBusca", function (req, res) {
+router.post("/quizBuscar", function (req, res) {
     quizController.quizBuscar(req, res);
+})
+
+router.get("/rank", function (req, res) {
+    quizController.rank_acertomax(req, res);
 })
 
 module.exports = router;

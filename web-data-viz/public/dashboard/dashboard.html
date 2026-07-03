@@ -66,7 +66,7 @@
             <h1>Dashboard</h1>
             <div class="kpis">
                 <div class="campo" id="media_acertos">
-                    
+
                 </div>
 
                 <div class="campo" id="div_total">
@@ -93,10 +93,9 @@
             </div>
 
             <div class="Rank">
-                    <h1>Acertos vs Erros</h1>
-                    <div id="grafico-rank">
-                    </div>
-                </div>
+                <h1>Acertos vs Erros</h1>
+                <div id="grafico-rank"><canvas id="canvaRank"></canvas></div>
+            </div>
         </div>
 
 
@@ -147,7 +146,7 @@
             // `
 
             document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.idusuario}" class="display-none">
+                <div id="graficos${item.idusuario}" class="display-none">
                     <div class="graph">
                         <canvas id="myChartCanvas${item.idusuario}"></canvas>
                     </div>
@@ -155,6 +154,7 @@
                         <p id="avisoCaptura${item.idusuario}" style="color: white"></p>
                     </div>
                 </div>
+                
             `
 
             obterDadosGrafico(item.idusuario)
@@ -177,7 +177,7 @@
         for (i = 0; i < todosOsGraficos.length; i++) {
             // exibindo - ou não - o gráfico
             if (todosOsGraficos[i].idusuario != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].idusuario}`)
+                let elementoAtual = document.getElementById(`graficos${todosOsGraficos[i].idusuario}`)
                 if (elementoAtual.classList.contains("display-block")) {
                     elementoAtual.classList.remove("display-block")
                 }
@@ -193,7 +193,8 @@
         }
 
         // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
+        let graficoExibir = document.getElementById(`graficos${idAquario}`)
+        console.log("elemento");
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
@@ -230,6 +231,28 @@
 
                     plotarGrafico(resposta, idAquario);
 
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function BuscarVitorias() {
+
+        fetch(`/quiz/rank`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+
+                    GerarGraficoVitorias(resposta);
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -239,6 +262,33 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
+
+    function GerarGraficoVitorias(resposta) {
+        let labels = [];
+        let dados = [];
+
+        resposta.forEach((dados) => {
+            labels.push(dados.nome);
+            dados.push(dados.acertos_max);
+        })
+
+        const config = {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "max_acertos",
+                    data: dados
+                }]
+            }
+
+        }
+
+        new Chart(document.getElementById("canvaRank"), config)
+
+
+    }
+
 
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
@@ -271,12 +321,14 @@
             ]
         };
 
+
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
+
             var registro = resposta[i];
             labels.push(registro.quizData);
             dados.datasets[0].data.push(registro.acertos);
@@ -297,13 +349,15 @@
             data: dados,
         };
 
+
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
             document.getElementById(`myChartCanvas${idAquario}`),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico2(idAquario, dados, myChart), 2000);
+
     }
 
 
@@ -359,6 +413,60 @@
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function atualizarGrafico2(dados, myChart) {
+
+
+
+        fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    obterdados();
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados2);
+
+                    // let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    // avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].quizData == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].quizData)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].quizData); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de acertos
+                        dados.datasets[0].data.push(novoRegistro[0].acertos_max); // incluir uma nova medida de acertos
+
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico2(dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico2(dados, myChart), 2000);
             }
         })
             .catch(function (error) {

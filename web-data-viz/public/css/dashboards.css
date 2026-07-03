@@ -179,6 +179,10 @@ font-weight: normal;
   border: 2px solid #cf60e6;
 }
 
+#grafico-rank{
+  position: absolute;
+}
+
 
 /* .label-captura {
   display: flex;
