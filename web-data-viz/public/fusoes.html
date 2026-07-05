@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Steven Universo</title>
+    <title>Fusão</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -46,27 +46,27 @@
     <div class="simulador">
         <div class="container-card">
             <div class="column">
-                <button class="card" onclick="btn_steven()"><img src="assets/imgs/Steven.png" alt="steven"
+                <button class="card"  id="card_selecionados1"  onclick="btn_steven()"><img src="assets/imgs/Steven.png" alt="steven"
                         width="150px"></button>
-                <button class="card" onclick="btn_perola()"><img src="assets/imgs/perola.png" alt="perola"
+                <button class="card" id="card_selecionados2" onclick="btn_perola()"><img src="assets/imgs/perola.png" alt="perola"
                         width="150px"></button>
-                <button class="card" onclick="btn_ametista()"><img src="assets/imgs/ametista.png" alt="ametista"
-                        width="150px"></button>
-            </div>
-            <div class="column">
-                <button class="card" onclick="btn_garnet()"><img src="assets/imgs/garnet.png" alt="garnet"
-                        width="150px"></button>
-                <button class="card" onclick="btn_lapis()"><img src="assets/imgs/lapis.png" alt="lapis"
-                        width="150px"></button>
-                <button class="card" onclick="btn_rose()"><img src="assets/imgs/rose.png" alt="rose"
+                <button class="card" id="card_selecionados3" onclick="btn_ametista()"><img src="assets/imgs/ametista.png" alt="ametista"
                         width="150px"></button>
             </div>
             <div class="column">
-                <button class="card" onclick="btn_jasper()"><img src="assets/imgs/jasper.png" alt="jasper"
+                <button class="card" id="card_selecionados4" onclick="btn_garnet()"><img src="assets/imgs/garnet.png" alt="garnet"
                         width="150px"></button>
-                <button class="card" onclick="btn_ruby()"><img src="assets/imgs/ruby.png" alt="roby"
+                <button class="card" id="card_selecionados5" onclick="btn_lapis()"><img src="assets/imgs/lapis.png" alt="lapis"
                         width="150px"></button>
-                <button class="card" onclick="btn_safira()"><img src="assets/imgs/safira.png" alt="safira"
+                <button class="card" id="card_selecionados6" onclick="btn_rose()"><img src="assets/imgs/rose.png" alt="rose"
+                        width="150px"></button>
+            </div>
+            <div class="column">
+                <button class="card" id="card_selecionados7" onclick="btn_jasper()"><img src="assets/imgs/jasper.png" alt="jasper"
+                        width="150px"></button>
+                <button class="card" id="card_selecionados8" onclick="btn_ruby()"><img src="assets/imgs/ruby.png" alt="roby"
+                        width="150px"></button>
+                <button class="card" id="card_selecionados9" onclick="btn_safira()"><img src="assets/imgs/safira.png" alt="safira"
                         width="150px"></button>
             </div>
 
@@ -291,24 +291,30 @@
     let selecao1 = "";
     let selecao2 = "";
     let contador = 0;
+
     function btn_ametista() {
         if (contador === 0) {
             selecao1 = "ametista";
             contador++
+            document.getElementById("card_selecionados3").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "ametista";
             contador++
+            document.getElementById("card_selecionados3").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
+            
         }
     }
     function btn_steven() {
         if (contador === 0) {
             selecao1 = "steven";
             contador++
+            document.getElementById("card_selecionados1").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "steven";
             contador++
+            document.getElementById("card_selecionados1").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançsado! ")
         }
@@ -316,9 +322,11 @@
         if (contador === 0) {
             selecao1 = "perola";
             contador++
+            document.getElementById("card_selecionados2").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "perola";
             contador++
+            document.getElementById("card_selecionados2").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -326,9 +334,11 @@
         if (contador === 0) {
             selecao1 = "garnet";
             contador++
+            document.getElementById("card_selecionados4").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "garnet";
             contador++
+            document.getElementById("card_selecionados4").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -336,9 +346,11 @@
         if (contador === 0) {
             selecao1 = "lapis";
             contador++
+            document.getElementById("card_selecionados5").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "lapis";
             contador++
+            document.getElementById("card_selecionados5").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -346,9 +358,11 @@
         if (contador === 0) {
             selecao1 = "jasper";
             contador++
+            document.getElementById("card_selecionados7").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "jasper";
             contador++
+            document.getElementById("card_selecionados7").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -356,9 +370,11 @@
         if (contador === 0) {
             selecao1 = "ruby";
             contador++
+            document.getElementById("card_selecionados8").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "ruby";
             contador++
+            document.getElementById("card_selecionados8").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -367,9 +383,11 @@
         if (contador === 0) {
             selecao1 = "safira";
             contador++
+            document.getElementById("card_selecionados9").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "safira";
             contador++
+            document.getElementById("card_selecionados9").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -379,9 +397,11 @@
         if (contador === 0) {
             selecao1 = "rose";
             contador++
+            document.getElementById("card_selecionados6").classList.add("selecionado")
         } else if (contador === 1) {
             selecao2 = "rose";
             contador++
+            document.getElementById("card_selecionados6").classList.add("selecionado")
         } else {
             alert("Numero máximo de cartas alcançado! ")
         }
@@ -414,6 +434,15 @@
         contador = 0;
         div_mensagem.innerHTML = "";
         div_mensagem2.innerHTML = "";
+        document.getElementById("card_selecionados1").classList.remove("selecionado")
+        document.getElementById("card_selecionados2").classList.remove("selecionado")
+        document.getElementById("card_selecionados3").classList.remove("selecionado")
+        document.getElementById("card_selecionados4").classList.remove("selecionado")
+        document.getElementById("card_selecionados5").classList.remove("selecionado")
+        document.getElementById("card_selecionados6").classList.remove("selecionado")
+        document.getElementById("card_selecionados7").classList.remove("selecionado")
+        document.getElementById("card_selecionados8").classList.remove("selecionado")
+        document.getElementById("card_selecionados9").classList.remove("selecionado")
     }
 
 </script>

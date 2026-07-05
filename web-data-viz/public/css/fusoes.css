@@ -162,3 +162,11 @@ body {
   margin-left: 45px;
   
 }
+
+.selecionado{
+  width: 90%;
+      background-color: #9c00975b;
+      border: 2px solid rgb(130, 0, 117);
+      border-radius: 20px;
+      
+}

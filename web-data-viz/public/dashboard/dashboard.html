@@ -49,7 +49,8 @@
                 </div>
                 <div class="btn-nav">
 
-                    <a href="../quiz.html"> <button style="background-color: rgb(218, 70, 255);">Quiz</button></a>
+                    <a href="../quiz.html"> <button onclick="clicarNaPaginaQuiz()"
+                            style="background-color: rgb(218, 70, 255);">Quiz</button></a>
 
                 </div>
 
@@ -66,35 +67,46 @@
             <h1>Dashboard</h1>
             <div class="kpis">
                 <div class="campo" id="media_acertos">
-
+                    <h3>Média de acertos</h3>
+                    <h2 style="color: #1800ad;">0</h2>
                 </div>
 
                 <div class="campo" id="div_total">
-
+                    <h3>Total de Quizzes</h3>
+                    <h2 style="color: #00783e;">0</h2>
                 </div>
 
                 <div class="campo" id="total_acertos">
-
+                    <h3>Acertos máximos</h3>
+                    <h2 style=" color: #d300cb;">0</h2>
                 </div>
             </div>
+            <div class="divsao_graficos">
+                <div class="dash">
+                    <div id="alerta">
+                    </div>
 
-            <div class="dash">
-                <div id="alerta">
-                </div>
-
-                <div class="btns-dash" id="btnAquario">
-                    <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                </div>
-                <div class="tabelas">
-                    <h1>Acertos vs Erros</h1>
-                    <div id="graficos">
+                    <div class="btns-dash" id="btnAquario">
+                        <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+                    </div>
+                    <div class="tabelas">
+                        <h1>Acertos vs Erros</h1>
+                        <div id="graficos">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="Rank">
-                <h1>Acertos vs Erros</h1>
-                <div id="grafico-rank"><canvas id="canvaRank"></canvas></div>
+                <div class="Rank">
+                    <h1>Acertos vs Erros</h1>
+                    <div id="grafico-rank"></div>
+                </div>
+                <p>Rank de Acertos</p>
+                <h4>Acertos vs Erros</h4>
+                <h5>Último Quiz</h5>
+                <h6>Penúltimo Quiz</h6>
+
+
+
             </div>
         </div>
 
@@ -107,6 +119,13 @@
 </html>
 
 <script>
+
+    function clicarNaPaginaQuiz() {
+
+        alert("⚠️ Atenção: O gráfico 'Rank de Acertos' exibe somente o resultado do primeiro quiz realizado por cada usuário.");
+
+    }
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
@@ -156,7 +175,18 @@
                 </div>
                 
             `
-
+            document.getElementById("grafico-rank").innerHTML += `
+                <div id="graficos${item.idusuario}" class="display-none">
+                    <div class="graph">
+                        <canvas id="canvaRank"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura${item.idusuario}" style="color: white"></p>
+                    </div>
+                </div>
+                
+            `
+            BuscarVitorias()
             obterDadosGrafico(item.idusuario)
         });
 
@@ -267,9 +297,9 @@
         let labels = [];
         let dados = [];
 
-        resposta.forEach((dados) => {
-            labels.push(dados.nome);
-            dados.push(dados.acertos_max);
+        resposta.forEach((resposta) => {
+            labels.push(resposta.nome);
+            dados.push(resposta.acertos);
         })
 
         const config = {
@@ -277,15 +307,39 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "max_acertos",
+                    label: "acertos",
                     data: dados
                 }]
+            },
+            options: {
+                indexAxis: 'y',
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(75, 192, 192)',
+                    'rgba(54, 162, 235)',
+                    'rgba(153, 102, 255)',
+                    'rgba(201, 203, 207)',
+                    'rgba(255, 159, 64)',
+                    'rgba(255, 205, 86)',
+                    'rgba(235, 54, 162)',
+                    'rgba(46, 204, 113)',
+                    'rgba(26, 188, 156)',
+                    'rgba(241, 196, 15)',
+                    'rgba(231, 76, 60)',
+                    'rgba(52, 152, 219)',
+                    'rgba(155, 89, 182)',
+                    'rgba(243, 156, 18)'
+                ]
             }
 
         }
 
-        new Chart(document.getElementById("canvaRank"), config)
+        let grafico_quiz = new Chart(document.getElementById("canvaRank"), config)
 
+
+        // document.getElementById("btnAquario").innerHTML += `
+        // <button class="btn-chart" onclick="exibirAquario(${item.idusuario})" id="btnAquario${item.idusuario}">${item.descricao}</button>
+        // `
 
     }
 
@@ -356,7 +410,7 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico2(idAquario, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
 
     }
 
@@ -421,57 +475,4 @@
 
     }
 
-    function atualizarGrafico2(dados, myChart) {
-
-
-
-        fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    obterdados();
-                    // alertar(novoRegistro, idAquario);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados2);
-
-                    // let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    // avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].quizData == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].quizData)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].quizData); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de acertos
-                        dados.datasets[0].data.push(novoRegistro[0].acertos_max); // incluir uma nova medida de acertos
-
-
-                        myChart.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico2(dados, myChart), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico2(dados, myChart), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
 </script>

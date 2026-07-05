@@ -124,12 +124,43 @@ font-weight: normal;
 
  }
 
+ .dashboard p{
+  position: fixed;
+  margin-left: 775px;
+  font-size: 25px;
+  margin-top: 60px;
+  font-weight: 600;
+ }
+
+ .dashboard h4{
+  position: fixed;
+  margin-left: 220px;
+  font-size: 25px;
+  margin-top: 60px;
+  font-weight: 600;
+ }
+
+ .dashboard h5{
+  position: fixed;
+  margin-left: 404px;
+  font-size: 15px;
+  margin-top: 355px;
+  font-weight: 580;
+ }
+
+ .dashboard h6{
+  position: fixed;
+  margin-left: 150px;
+  font-size: 15px;
+  margin-top: 355px;
+  font-weight: 580;
+ }
+
 .kpis{
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 120px;
-  
 }
 
 .campo{
@@ -159,12 +190,44 @@ font-weight: normal;
   margin-top: 10px;
 }
 
+.divsao_graficos{
+  margin-top: 30px;
+  margin-bottom: -470px;
+  width: 100%;
+  height: 60vh;
+  background-color: none;
+}
+
 #graficos{
   width: 100%;
   height: 110vh;
   font-size: 20px;
   margin-top: 440px;
   
+}
+
+
+
+#grafico-rank{
+  width: 87%;
+  height: 50vh;
+  font-size: 20px;
+  margin-top: 440px;
+  margin-left: 25px;
+  
+}
+
+.Rank{
+  width: 35%;
+  height: 40vh;
+  background-color: #ffebfd;
+  padding: 20px;
+  border-radius: 20px;
+  position: absolute;
+  margin-top: 50px;
+  border: 2px solid #cf60e6;
+  margin-left: 650px;
+
 }
 
 .tabelas{
@@ -177,10 +240,6 @@ font-weight: normal;
   margin-left: 30px;
   margin-top: 50px;
   border: 2px solid #cf60e6;
-}
-
-#grafico-rank{
-  position: absolute;
 }
 
 

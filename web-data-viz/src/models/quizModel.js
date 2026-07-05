@@ -21,11 +21,11 @@ function quizBuscar(acertos, erros, idusuario) {
 
 function rank_acertomax() {
 
-    var instrucaoSql = `select u.nome, max(q.acertos) as acertos_max 
-                        from usuario as u 
-                        inner join quiz as q on 
-                        u.idusuario = q.fkquiz 
-                        group by u.idusuario, u.nome;`
+    var instrucaoSql = `select u.nome, q.acertos, q.fkquiz, q.quizData as quiz_data 
+    from quiz as q join (select q.fkquiz, min(q.quizData) as data_quiz 
+    from  usuario as u  inner join quiz as q on u.idusuario = q.fkquiz group by q.fkquiz) 
+    as datas on q.fkquiz = datas.fkquiz and q.quizData = datas.data_quiz 
+    join usuario as u on u.idusuario = q.fkquiz ORDER BY acertos desc;`
     return database.executar(instrucaoSql);
 }
 
