@@ -11,7 +11,7 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/cadastro.css">
-  <link rel="icon" href="assets/icon/icon-site.png">
+    <link rel="icon" href="assets/icon/icon-site.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -64,22 +64,21 @@
                      -->
                 <div class="campo">
 
-            <input class="meu-input" id="nome_input" type="text" placeholder="Usuário" />
-          </div>
-          <div class="campo">
-            <input class="meu-input" id="email_input" type="text" placeholder="E-mail" />
-          </div>
-          <div class="campo">
-            <input class="meu-input" id="senha_input" type="password" placeholder="Senha" />
-          </div>
-          
+                    <input class="meu-input" id="nome_input" type="text" placeholder="Usuário" />
+                </div>
+                <div class="campo">
+                    <input class="meu-input" id="email_input" type="text" placeholder="E-mail" />
+                </div>
+                <div class="campo">
+                    <input class="meu-input" id="senha_input" type="password" placeholder="Senha" />
+                </div>
+
                 <div class="bnt_login">
                     <button class="botao" onclick="cadastrar()">CADASTRAR</button>
                     <button class="cadastre_se">Já tem uma conta? <a href="login.html">Entrar</a></button>
                 </div>
             </div>
             <div id="div_aguardar" class="loading-div">
-                <div id="mensagem_erro"></div>
                 <img src="./assets/aguarde-pink2.gif" id="loading-gif" />
             </div>
 
@@ -108,8 +107,8 @@
             var nomeVar = nome_input.value;
             var emailVar = email_input.value;
             var senhaVar = senha_input.value;
-            
-            
+
+
 
             // Verificando se há algum campo em branco
             if (
@@ -123,7 +122,23 @@
 
                 finalizarAguardar();
                 return false;
-            } else {
+            } else if (nomeVar.length <= 1) {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML =
+                    "(Erro no nome. Nome deve ter mais de 1 caracter)";
+
+                finalizarAguardar();
+                return false;
+            }
+            else if (senhaVar.length <= 6) {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML =
+                    "(Erro na senha. Nome deve ter mais de 6 caracter)";
+
+                finalizarAguardar();
+                return false;
+            }
+             else {
                 setInterval(sumirMensagem, 5000);
             }
 
@@ -152,7 +167,7 @@
                     nomeServer: nomeVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
-                    
+
                 }),
             })
                 .then(function (resposta) {

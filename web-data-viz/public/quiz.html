@@ -175,7 +175,7 @@
         },
 
         {
-            pergunta: "Qual o nome da melhor amifa de Steven",
+            pergunta: "Qual o nome da melhor amiga de Steven",
             alternativaA: "Elle",
             alternativaB: "Connie",
             alternativaC: "Anna",
@@ -240,6 +240,8 @@
     let certas = 0
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
+
+
     // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
     function onloadEsconder() {
@@ -278,7 +280,7 @@
 
     function submeter() {
         const options = document.getElementsByName("option"); // recupera alternativas no html
-
+         
         let hasChecked = false
         for (let i = 0; i < options.length; i++) {
             if (options[i].checked) {
@@ -292,7 +294,6 @@
         } else {
             btnSubmeter.disabled = true
             btnProx.disabled = false
-
             habilitarAlternativas(false)
 
             checarResposta()
@@ -312,6 +313,7 @@
     function avancar() {
         btnProx.disabled = true
         btnSubmeter.disabled = false
+       
 
         desmarcarRadioButtons()
 

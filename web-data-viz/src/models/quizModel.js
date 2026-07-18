@@ -1,7 +1,10 @@
 var database = require("../database/config")
 
 function totalquiz(idAquario) {
-    var instrucaoSql = `select count(idquiz) as totalquiz, max(acertos) as acertos_max, floor(sum(acertos) / count(idquiz)) as media from quiz where fkquiz = ${idAquario};`
+    var instrucaoSql = `select count(idquiz) as totalquiz, 
+                        ifnull( max(acertos),0 )as acertos_max, 
+                        ifnull( floor(sum(acertos) / count(idquiz)),0) as media 
+                        from quiz where fkquiz = ${idAquario};`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
